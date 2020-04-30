@@ -6,6 +6,7 @@ import { FetchData } from './components/FetchData';
 import { Counter } from './components/Counter';
 import { Trips } from './components/Trip/Trips'
 import { Create } from './components/Trip/Create'
+import { Update } from './components/Trip/Update'
 import './custom.css'
 
 export default class App extends Component {
@@ -19,6 +20,7 @@ export default class App extends Component {
         <Route path='/fetch-data' component={FetchData} />
         <Route path='/trips' component={Trips} />
         <Route path='/create' component={Create} />
+        <Route path='/update/:id' component={Update} />
       </Layout>
     );
   }
