@@ -9,14 +9,18 @@ export class Trips extends Component
             trips: [],
             loading: true
         }
-        // this.handleUpdate = this.handleUpdate.bind(this);
     }
 
     componentDidMount() {
         this.populateTripsData();
     }
+
     handleUpdate(tripId) {
         this.props.history.push('/Update/'+tripId);
+    }
+
+    handleDelete(tripId) {
+        this.props.history.push('/Delete/'+tripId);
     }
 
     renderAllTripsTable(trips) {
@@ -39,7 +43,12 @@ export class Trips extends Component
                             <td>{trip.description}</td>
                             <td>{new Date(trip.dateStarted).toISOString().slice(0,10)}</td>
                             <td>{trip.dateCompleted? new Date(trip.dateCompleted).toISOString().slice(0,10): '-'}</td>
-                            <td><Button variant="primary" onClick={()=>this.handleUpdate(trip.id)}>Update</Button></td>
+                            <td>
+                            <div className="btn-container">
+                                <Button variant="primary" onClick={()=>this.handleUpdate(trip.id)}>Update</Button>
+                                <Button variant="danger" onClick={()=>this.handleDelete(trip.id)}>Delete</Button>
+                            </div>
+                            </td>
                         </tr>
                         ) 
                     }
