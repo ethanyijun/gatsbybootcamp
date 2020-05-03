@@ -7,7 +7,6 @@ import registerServiceWorker from './registerServiceWorker';
 import {Provider} from 'react-redux';
 import configureStore from './store/store';
 
-
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href');
 const rootElement = document.getElementById('root');
 const store = configureStore({})

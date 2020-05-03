@@ -77,17 +77,6 @@ export class Trips extends Component
         ) : (
             this.state.trips.length && this.renderAllTripsTable(this.state.trips)
         );
-        // let content = this.state.loading ? (
-        //     <p>
-        //         <em>Loading...</em>
-        //     </p>
-        // ) : ( this.state.failed? (
-        //     <div className="text-danger">
-        //         <em>{this.state.error}</em>
-        //     </div>
-        // ):
-        //     (this.renderAllTripsTable(this.state.trips)) 
-        // )
 
         return (
             <div>
@@ -97,19 +86,6 @@ export class Trips extends Component
             </div>
         )
     } 
-    
-    // async populateTripsData() {
-    //     axios.get("api/Trips/GetAllTrips").then(result => {
-    //         const response = result.data;
-    //         this.setState({
-    //             trips: response, loading: false, failed: false, error:''
-    //         });
-    //     }).catch(error => {
-    //         this.setState({
-    //             trips: [], loading: false, failed: true, error:"Trips could not be loaded."
-    //         });
-    //     })
-    // }
 }
 
 const mapStateToProps = ({trips})=>({
