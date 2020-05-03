@@ -1,5 +1,8 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+import {connect} from 'react-redux';
+import {getAllTrips} from '../../actions/tripActions'
+
 import Button from 'react-bootstrap/Button';
 export class Trips extends Component
 {
@@ -14,7 +17,13 @@ export class Trips extends Component
     }
 
     componentDidMount() {
-        this.populateTripsData();
+        this.props.getAllTrips();
+    }
+
+    componentDidUpdate(prevProps) {
+        if(prevProps.trips.data !== this.props.trips.data){
+            this.setState({trips: this.props.trips.data})
+        }
     }
 
     handleUpdate(tripId) {
@@ -60,17 +69,25 @@ export class Trips extends Component
     }
 
     render() {
-        let content = this.state.loading ? (
+        let content = this.props.trips.loading ?
+        (
             <p>
-                <em>Loading...</em>
+               <em>Loading...</em> 
             </p>
-        ) : ( this.state.failed? (
-            <div className="text-danger">
-                <em>{this.state.error}</em>
-            </div>
-        ):
-            (this.renderAllTripsTable(this.state.trips)) 
-        )
+        ) : (
+            this.state.trips.length && this.renderAllTripsTable(this.state.trips)
+        );
+        // let content = this.state.loading ? (
+        //     <p>
+        //         <em>Loading...</em>
+        //     </p>
+        // ) : ( this.state.failed? (
+        //     <div className="text-danger">
+        //         <em>{this.state.error}</em>
+        //     </div>
+        // ):
+        //     (this.renderAllTripsTable(this.state.trips)) 
+        // )
 
         return (
             <div>
@@ -81,16 +98,22 @@ export class Trips extends Component
         )
     } 
     
-    async populateTripsData() {
-        axios.get("api/Trips/GetAllTrips").then(result => {
-            const response = result.data;
-            this.setState({
-                trips: response, loading: false, failed: false, error:''
-            });
-        }).catch(error => {
-            this.setState({
-                trips: [], loading: false, failed: true, error:"Trips could not be loaded."
-            });
-        })
-    }
+    // async populateTripsData() {
+    //     axios.get("api/Trips/GetAllTrips").then(result => {
+    //         const response = result.data;
+    //         this.setState({
+    //             trips: response, loading: false, failed: false, error:''
+    //         });
+    //     }).catch(error => {
+    //         this.setState({
+    //             trips: [], loading: false, failed: true, error:"Trips could not be loaded."
+    //         });
+    //     })
+    // }
 }
+
+const mapStateToProps = ({trips})=>({
+    trips
+});
+
+export default connect(mapStateToProps,{getAllTrips})(Trips);

@@ -16,7 +16,7 @@ const getTripsError = payload => ({
 
 export const getAllTrips = () => dispatch => {
     dispatch({type: GET_ALL_TRIPS_REQUEST});
-    return axios.get('api/trips/GetTrips').then(res => {
+    return axios.get('api/trips/GetAllTrips').then(res => {
         const reponse = res.data;
         dispatch(getTripSuccess(reponse));
     }).catch(error => {
