@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "gatsby"
 import Layout from "../Components/layout"
 
-export default function about() {
+export default function About() {
   return (
     <div>
       <Layout>
