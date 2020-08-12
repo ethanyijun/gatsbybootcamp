@@ -11,6 +11,13 @@ module.exports = {
     author: "Ethan Gai",
   },
   plugins: [
+    {
+      resolve: "gatsby-source-contentful",
+      options: {
+        spaceId: "02f2ojkw5o5l",
+        accessToken: "rngvfKFDieA7Moz-mMQeeQprMrSBh823yZ1iOqKhbmA",
+      },
+    },
     "gatsby-plugin-sass",
     {
       resolve: "gatsby-source-filesystem",
