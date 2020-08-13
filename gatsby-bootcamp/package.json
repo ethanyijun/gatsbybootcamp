@@ -16,6 +16,7 @@
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^14.1.1",
     "gatsby": "^2.24.26",
+    "gatsby-plugin-react-helmet": "^3.3.10",
     "gatsby-plugin-sass": "^2.3.12",
     "gatsby-plugin-sharp": "^2.6.26",
     "gatsby-remark-images": "^3.3.25",
@@ -24,8 +25,9 @@
     "gatsby-source-filesystem": "^2.3.24",
     "gatsby-transformer-remark": "^2.8.28",
     "graphql-playground": "^1.3.17",
+    "helmet": "^4.0.0",
     "node-sass": "^4.14.1",
-    "react": "^16.12.0",
+    "react": "^16.13.1",
     "react-dom": "^16.12.0"
   },
   "devDependencies": {

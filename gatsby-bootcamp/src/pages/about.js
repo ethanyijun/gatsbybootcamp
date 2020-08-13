@@ -1,11 +1,13 @@
 import React from "react"
 import { Link } from "gatsby"
 import Layout from "../Components/layout"
+import Head from "../Components/head"
 
 export default function About() {
   return (
     <div>
       <Layout>
+        <Head title="About" />
         <h1>About me</h1>
         <p>
           Graduated from UTS with bachelor of science in IT, currently studying
